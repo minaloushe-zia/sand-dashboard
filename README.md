@@ -89,7 +89,7 @@ Review message against the 10% threshold
 [Expandable source data and assumptions]
 ```
 
-The top gives the budget answer and review status. The middle explains the price and activity behind it. The bottom lets the lead check particular observations without making the detailed table part of the main reading path. I used a game-inspired cyberpunk appearance with a dark background, cyan and violet panels, and monospaced metric values. The decorative emblem stays in the title area, while the charts and three metrics remain readable and the amber message draws attention to the review decision.
+The top gives the budget answer and review status. The middle explains the price and activity behind it. The bottom lets the lead check particular observations without making the detailed table part of the main reading path. 
 
 ## Step 4 — Refresh frequency, review frequency, and action
 
