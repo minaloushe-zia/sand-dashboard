@@ -2,6 +2,8 @@
 
 A small Streamlit dashboard for a game studio's event operations lead to estimate how many SAND tokens a dollar-denominated rewards budget can fund.
 
+**Live app:** [SAND Reward Planner](https://sand-dashboard-myhhguoscjpbwpnfwffal2.streamlit.app/) · **Repository:** [minaloushe-zia/sand-dashboard](https://github.com/minaloushe-zia/sand-dashboard).
+
 ## Step 1 — Dataset and decision-maker
 
 **Dataset:** [Cryptocoins Historical Prices — CoinGecko on Kaggle](https://www.kaggle.com/datasets/sudalairajkumar/cryptocurrency-historical-prices-coingecko), using only `the-sandbox.csv`.
@@ -89,7 +91,7 @@ Review status against the example 10% threshold
 
 The top answers whether the reward plan needs review and what the budget funds. The middle supplies the market context, with more width given to the price chart because price directly determines the reward quantity. The optional table sits at the bottom so a manager can verify particular observations without adding a third main chart.
 
-The visual design follows a restrained cyberpunk style: a dark navy background, cyan and violet chart accents, thin borders, and large metric values. The layout keeps the three KPIs prominent and avoids animation or decorative panels that would compete with the budgeting decision.
+The visual design uses a cyberpunk control-deck style: a dark navy canvas, a geometric SAND emblem, a faint background grid, cyan and violet panel edges, and large monospaced metric values. The sidebar groups the two planning controls, and an amber review message highlights the operating decision. A visible historical-snapshot badge distinguishes the data from a live quote. The three KPIs remain prominent, decorative graphics stay outside the charts, and the layout adapts to narrow screens without adding more metrics or controls.
 
 ## Step 4 — Refresh and action
 
@@ -103,22 +105,26 @@ A one-day delay can leave the manager using a reference price that has already m
 
 The project was initialized with `uv init` and targets **Python 3.14**.
 
+Run these commands from the cloned repository root (the application files are in `sand-dashboard/`):
+
 ```bash
-uv sync
-uv run streamlit run app.py
+uv sync --project sand-dashboard
+uv run --project sand-dashboard streamlit run sand-dashboard/app.py
 ```
 
-To work on the EDA notebook, install the development dependencies with `uv sync --group dev` and select the project's `.venv` Python kernel in your notebook editor.
+To work on the EDA notebook, install the development dependencies with `uv sync --project sand-dashboard --group dev` and select the project's `sand-dashboard/.venv` Python kernel in your notebook editor.
 
-The CSV is included in the repository; no separate Kaggle download or API key is needed to run the app. Runtime dependencies are listed in the root [`requirements.txt`](requirements.txt). Streamlit Cloud prioritizes the committed `uv.lock` when both are present; it locks the same direct runtime package versions. See the [official dependency-file priority](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/app-dependencies).
+The CSV is included in the repository; no separate Kaggle download or API key is needed to run the app. Runtime dependencies are listed next to the entrypoint in [`requirements.txt`](requirements.txt). Streamlit Cloud prioritizes the committed `uv.lock` when both are present; it locks the same direct runtime package versions. See the [official dependency-file priority](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/app-dependencies).
 
 Local validation passed six interaction checks covering budget arithmetic, single-day and partial date selections, the unavailable seven-day comparison, and rounding close to the review threshold. The EDA notebook includes its executed results and figures.
 
 ## Deploy to Streamlit Community Cloud
 
 1. Sign in to Streamlit Community Cloud and create an app from the public GitHub repository [`minaloushe-zia/sand-dashboard`](https://github.com/minaloushe-zia/sand-dashboard).
-2. Select branch **`main`** and entrypoint **`app.py`**.
+2. Select branch **`main`** and entrypoint **`sand-dashboard/app.py`**.
 3. Under **Advanced settings**, choose **Python 3.14**, as required by the assignment.
-4. Deploy, check that the page loads with the bundled CSV, then copy the resulting app URL.
+4. Keep the theme configuration at the repository root, `.streamlit/config.toml`, because Community Cloud runs from that directory even when the entrypoint is nested.
+5. Deploy, check that the page loads with the bundled CSV, then copy the resulting app URL.
 
 The app title uses **Team11**; the team name can be edited in the constant near the top of `app.py`. For submission, provide the deployed app URL and the GitHub repository URL. Each student should follow the assignment's requirement to submit their own app and repository.
+
