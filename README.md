@@ -10,7 +10,7 @@ A small Streamlit dashboard for a game studio's event operations lead to estimat
 
 | Item | Detail |
 | --- | --- |
-| Committed file | `data/the-sandbox.csv` |
+| Committed file | `sand-dashboard/data/the-sandbox.csv` |
 | Size | 104,138 bytes, approximately 104 KB; no sampling required |
 | Shape | 1,322 rows × 5 columns |
 | Period | August 14, 2020–March 27, 2024 |
@@ -35,7 +35,7 @@ A dashboard keeps the reference price, budget calculation, and recent context to
 
 ## Step 3 — What matters, and what we cut
 
-The Pandas and Matplotlib exploration is saved in [`notebooks/eda.ipynb`](notebooks/eda.ipynb). It checks shape, types, missing values, duplicate dates, daily coverage, distributions, and relationships before selecting the dashboard elements.
+The Pandas and Matplotlib exploration is saved in [`sand-dashboard/notebooks/eda.ipynb`](sand-dashboard/notebooks/eda.ipynb). It checks shape, types, missing values, duplicate dates, daily coverage, distributions, and relationships before selecting the dashboard elements.
 
 | EDA finding | Effect on the design |
 | --- | --- |
@@ -114,7 +114,7 @@ uv run --project sand-dashboard streamlit run sand-dashboard/app.py
 
 To work on the EDA notebook, install the development dependencies with `uv sync --project sand-dashboard --group dev` and select the project's `sand-dashboard/.venv` Python kernel in your notebook editor.
 
-The CSV is included in the repository; no separate Kaggle download or API key is needed to run the app. Runtime dependencies are listed next to the entrypoint in [`requirements.txt`](requirements.txt). Streamlit Cloud prioritizes the committed `uv.lock` when both are present; it locks the same direct runtime package versions. See the [official dependency-file priority](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/app-dependencies).
+The CSV is included in the repository; no separate Kaggle download or API key is needed to run the app. Runtime dependencies are listed next to the entrypoint in [`sand-dashboard/requirements.txt`](sand-dashboard/requirements.txt). Streamlit Cloud prioritizes the committed `uv.lock` when both are present; it locks the same direct runtime package versions. See the [official dependency-file priority](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/app-dependencies).
 
 Local validation passed six interaction checks covering budget arithmetic, single-day and partial date selections, the unavailable seven-day comparison, and rounding close to the review threshold. The EDA notebook includes its executed results and figures.
 
@@ -126,5 +126,5 @@ Local validation passed six interaction checks covering budget arithmetic, singl
 4. Keep the theme configuration at the repository root, `.streamlit/config.toml`, because Community Cloud runs from that directory even when the entrypoint is nested.
 5. Deploy, check that the page loads with the bundled CSV, then copy the resulting app URL.
 
-The app title uses **Team11**; the team name can be edited in the constant near the top of `app.py`. For submission, provide the deployed app URL and the GitHub repository URL. Each student should follow the assignment's requirement to submit their own app and repository.
+The app title uses **Team11**; the team name can be edited in the constant near the top of `sand-dashboard/app.py`. For submission, provide the deployed app URL and the GitHub repository URL. Each student should follow the assignment's requirement to submit their own app and repository.
 
